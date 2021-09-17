@@ -44,4 +44,17 @@ class CarTest {
     assertThatThrownBy(() -> car.moveThaCar(number))
         .isInstanceOf(IllegalArgumentException.class);
   }
+
+  @DisplayName("차량간 거리를 비교해서 최대 거리 차량을 확인한다.")
+  @Test
+  void maxDistanceCar() {
+    car.moveThaCar(4);
+    assertThat(new Car("a").isMaxDistanceCar(car)).isTrue();
+  }
+
+  @DisplayName("차량간 거리를 비교해서 이동거리가 같은지 확인한다.")
+  @Test
+  void sameDistanceCar() {
+    assertThat(car.isSameDistanceCar(new Car("a"))).isTrue();
+  }
 }
