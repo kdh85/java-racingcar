@@ -29,15 +29,27 @@ public class Car {
   public void moveThaCar(final int number) {
     validationNumber(number);
 
-    if (number >= MOVE_LIMIT_NUMBER) {
+    if (isCanMove(number)) {
       moveDistance.move();
     }
+  }
+
+  private boolean isCanMove(final int number) {
+    return number >= MOVE_LIMIT_NUMBER;
   }
 
   private void validationNumber(final int number) {
     if (number < MIN_NUMBER || number > MAX_NUMBER) {
       throw new IllegalArgumentException(MSG_ERROR_LIMIT_NUMBER);
     }
+  }
+
+  public boolean isMaxDistanceCar(final Car otherCar) {
+    return moveDistance.isMaxDistance(otherCar.moveDistance);
+  }
+
+  public boolean isSameDistanceCar(final Car otherCar){
+    return moveDistance.isSameDistance(otherCar.moveDistance);
   }
 
   @Override
