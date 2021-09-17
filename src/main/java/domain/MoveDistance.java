@@ -18,6 +18,14 @@ public class MoveDistance {
     return distance;
   }
 
+  public boolean isMaxDistance(final MoveDistance target) {
+    return target.distance > this.distance;
+  }
+
+  public boolean isSameDistance(final MoveDistance target) {
+    return target.distance == this.distance;
+  }
+
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -41,5 +49,4 @@ public class MoveDistance {
         "distance=" + distance +
         '}';
   }
-
 }
