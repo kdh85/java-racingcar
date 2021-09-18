@@ -14,5 +14,6 @@ public class RacingMain {
     while (racing.isFinish()) {
       ResultView.printResult(racing.runningResult());
     }
+    ResultView.printWinner(racing.winners());
   }
 }
