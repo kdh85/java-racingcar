@@ -51,7 +51,7 @@ public class Cars {
     return car.carDistance() == findMaxDistance();
   }
 
-  public int findMaxDistance() {
+  private int findMaxDistance() {
     int maxDistance = cars.get(FIRST_CAR_INDEX).carDistance();
 
     for (int i = SECOND_CAR_INDEX, carsSize = cars.size(); i < carsSize; i++) {
