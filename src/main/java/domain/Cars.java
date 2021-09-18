@@ -1,16 +1,18 @@
 package domain;
 
-import Generator.RandomGenerator;
 import dto.RacingResultDto;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class Cars {
 
   private static final String SPLIT_SEPARATOR = ",";
+  private static final int SECOND_CAR_INDEX = 1;
+  private static final int FIRST_CAR_INDEX = 0;
 
   private final List<Car> cars;
 
@@ -31,9 +33,32 @@ public class Cars {
         .collect(Collectors.toList());
   }
 
-  public Cars movingCars() {
-    cars.forEach(car -> car.moveThaCar(RandomGenerator.createNumber()));
+  public Cars movingCars(final List<Integer> numbers) {
+
+    AtomicInteger count = new AtomicInteger();
+
+    cars.forEach(car -> car.moveThaCar(numbers.get(count.getAndIncrement())));
     return this;
+  }
+
+  public List<Car> findWinner() {
+    return cars.stream()
+        .filter(this::isSameToMaxDistance)
+        .collect(Collectors.toList());
+  }
+
+  private boolean isSameToMaxDistance(final Car car) {
+    return car.carDistance() == findMaxDistance();
+  }
+
+  public int findMaxDistance() {
+    int maxDistance = cars.get(FIRST_CAR_INDEX).carDistance();
+
+    for (int i = SECOND_CAR_INDEX, carsSize = cars.size(); i < carsSize; i++) {
+      maxDistance = cars.get(i).maxDistanceCar(maxDistance);
+    }
+
+    return maxDistance;
   }
 
   public List<RacingResultDto> racingResults() {
