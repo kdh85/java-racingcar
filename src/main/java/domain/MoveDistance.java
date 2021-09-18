@@ -18,12 +18,8 @@ public class MoveDistance {
     return distance;
   }
 
-  public boolean isMaxDistance(final MoveDistance target) {
-    return target.distance > this.distance;
-  }
-
-  public boolean isSameDistance(final MoveDistance target) {
-    return target.distance == this.distance;
+  public int maxDistance(final int maxDistance) {
+    return Math.max(maxDistance, this.distance);
   }
 
   @Override
