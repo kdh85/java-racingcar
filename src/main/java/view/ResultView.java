@@ -11,6 +11,7 @@ public class ResultView {
   private static final String RACING_PROGRESS_BAR = "-";
   private static final String RESULT_SEPARATOR = " : ";
   private static final String MSG_TITLE = "실행 결과";
+  private static final String MSG_WINNER = "가 최종 우승했습니다.";
 
   public static void printResult(final List<RacingResultDto> racingResult) {
 
@@ -33,5 +34,9 @@ public class ResultView {
     return IntStream
         .range(START_INCLUSIVE, distance).mapToObj(i -> RACING_PROGRESS_BAR)
         .collect(Collectors.joining());
+  }
+
+  public static void printWinner(final String winner) {
+    System.out.println(winner + MSG_WINNER);
   }
 }
