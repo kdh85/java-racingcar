@@ -33,13 +33,6 @@ class MoveDistanceTest {
   void isMaxDistance() {
     MoveDistance target = new MoveDistance();
     target.move();
-    assertThat(moveDistance.isMaxDistance(target)).isTrue();
-  }
-
-  @DisplayName("이동거리가 같은지 확인한다.")
-  @Test
-  void isSameDistance() {
-    MoveDistance target = new MoveDistance();
-    assertThat(moveDistance.isSameDistance(target)).isTrue();
+    assertThat(moveDistance.maxDistance(1)).isEqualTo(1);
   }
 }
