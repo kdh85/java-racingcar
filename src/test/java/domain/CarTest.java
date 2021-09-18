@@ -49,12 +49,6 @@ class CarTest {
   @Test
   void maxDistanceCar() {
     car.moveThaCar(4);
-    assertThat(new Car("a").isMaxDistanceCar(car)).isTrue();
-  }
-
-  @DisplayName("차량간 거리를 비교해서 이동거리가 같은지 확인한다.")
-  @Test
-  void sameDistanceCar() {
-    assertThat(car.isSameDistanceCar(new Car("a"))).isTrue();
+    assertThat(car.maxDistanceCar(1)).isEqualTo(1);
   }
 }
