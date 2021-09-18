@@ -44,12 +44,8 @@ public class Car {
     }
   }
 
-  public boolean isMaxDistanceCar(final Car otherCar) {
-    return moveDistance.isMaxDistance(otherCar.moveDistance);
-  }
-
-  public boolean isSameDistanceCar(final Car otherCar){
-    return moveDistance.isSameDistance(otherCar.moveDistance);
+  public int maxDistanceCar(final int maxDistance) {
+    return moveDistance.maxDistance(maxDistance);
   }
 
   @Override
@@ -77,4 +73,5 @@ public class Car {
         ", moveDistance=" + moveDistance +
         '}';
   }
+
 }
