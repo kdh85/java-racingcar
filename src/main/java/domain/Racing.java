@@ -9,24 +9,22 @@ public class Racing {
 
   private static final String WINNER_SEPARATOR = ", ";
 
-  private final int round;
-
   private final Cars cars;
 
-  private int currentRound;
+  private final Round round;
 
   public Racing(final Cars cars, final int round) {
-    this.round = round;
+    this.round = new Round(round);
     this.cars = cars;
   }
 
   public List<RacingResultDto> runningResult() {
-    currentRound++;
-    return cars.movingCars(RandomGenerator.createNumbers(round)).racingResults();
+    round.increaseRound();
+    return cars.movingCars(RandomGenerator.createNumbers(round.maxRound())).racingResults();
   }
 
   public boolean isFinish() {
-    return round != this.currentRound;
+    return !round.isSameRound();
   }
 
   public String winners() {
