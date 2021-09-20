@@ -11,7 +11,7 @@ public class RacingMain {
 
     ResultView.printResultTitle();
 
-    while (racing.isFinish()) {
+    while (racing.isContinue()) {
       ResultView.printResult(racing.runningResult());
     }
     ResultView.printWinner(racing.winners());

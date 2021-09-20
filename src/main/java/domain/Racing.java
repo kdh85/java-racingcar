@@ -19,12 +19,15 @@ public class Racing {
   }
 
   public List<RacingResultDto> runningResult() {
-    round.increaseRound();
     return cars.movingCars(RandomGenerator.createNumbers(round.maxRound())).racingResults();
   }
 
-  public boolean isFinish() {
-    return round.isNotSameRound();
+  public boolean isContinue() {
+    if(round.isNotSameRound()){
+      round.increaseRound();
+      return true;
+    }
+    return false;
   }
 
   public String winners() {
