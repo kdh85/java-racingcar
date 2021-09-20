@@ -26,8 +26,8 @@ public class Round {
     return this.currentRound = currentRound + ROUND_VALUE;
   }
 
-  public boolean isSameRound(){
-    return round == this.currentRound;
+  public boolean isNotSameRound(){
+    return round != this.currentRound;
   }
 
   public int maxRound(){
