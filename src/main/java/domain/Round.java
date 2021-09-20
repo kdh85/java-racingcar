@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Round {
 
@@ -9,7 +10,7 @@ public class Round {
 
   private final int round;
 
-  private int currentRound;
+  private final AtomicInteger count = new AtomicInteger();
 
   public Round(final int round) {
     validationRound(round);
@@ -23,11 +24,11 @@ public class Round {
   }
 
   public int increaseRound(){
-    return this.currentRound = currentRound + ROUND_VALUE;
+    return count.incrementAndGet();
   }
 
   public boolean isNotSameRound(){
-    return round != this.currentRound;
+    return round != count.get();
   }
 
   public int maxRound(){
