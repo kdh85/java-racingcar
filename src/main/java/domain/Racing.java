@@ -24,7 +24,7 @@ public class Racing {
   }
 
   public boolean isFinish() {
-    return !round.isSameRound();
+    return round.isNotSameRound();
   }
 
   public String winners() {
